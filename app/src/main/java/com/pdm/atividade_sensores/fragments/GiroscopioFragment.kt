@@ -13,11 +13,11 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.Navigation
 import com.pdm.atividade_sensores.MainActivity
 import com.pdm.atividade_sensores.R
-import com.pdm.atividade_sensores.databinding.ProximityFragmentBinding
+import com.pdm.atividade_sensores.databinding.GiroscopioFragmentBinding
 
-class ProximityFragment : Fragment(), SensorEventListener {
+class GiroscopioFragment : Fragment(), SensorEventListener {
 
-    lateinit var binding : ProximityFragmentBinding
+    lateinit var binding : GiroscopioFragmentBinding
     private var mAccelerometer : Sensor?= null
     private var resume = false;
 
@@ -26,9 +26,9 @@ class ProximityFragment : Fragment(), SensorEventListener {
             savedInstanceState: Bundle?
     ): View? {
 
-        binding = DataBindingUtil.inflate(inflater, R.layout.proximity_fragment, container, false)
+        binding = DataBindingUtil.inflate(inflater, R.layout.giroscopio_fragment, container, false)
 
-        mAccelerometer = (activity as MainActivity).mSensorManager.getDefaultSensor(Sensor.TYPE_PROXIMITY)
+        mAccelerometer = (activity as MainActivity).mSensorManager.getDefaultSensor(Sensor.TYPE_GYROSCOPE)
 
         binding.start.setOnClickListener {
             resumeReading(it)
@@ -40,7 +40,7 @@ class ProximityFragment : Fragment(), SensorEventListener {
 
         binding.voltar.setOnClickListener {
             pauseReading(it)
-            Navigation.findNavController(it).navigate(R.id.action_proximityFragment_to_homeFragment)
+            Navigation.findNavController(it).navigate(R.id.action_giroscopioFragment_to_homeFragment)
         }
 
         return binding.root
@@ -48,7 +48,7 @@ class ProximityFragment : Fragment(), SensorEventListener {
 
     override fun onSensorChanged(event: SensorEvent?) {
         if (event != null && resume) {
-            if (event.sensor.type == Sensor.TYPE_PROXIMITY) {
+            if (event.sensor.type == Sensor.TYPE_GYROSCOPE) {
                 binding.textSensor.text = event.values[0].toString()
             }
         }

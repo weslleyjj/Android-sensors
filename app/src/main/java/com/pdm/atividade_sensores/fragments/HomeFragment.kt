@@ -29,6 +29,10 @@ class HomeFragment  : Fragment(){
             Navigation.findNavController(it).navigate(R.id.action_homeFragment_to_proximityFragment)
         }
 
+        binding.giroscopio.setOnClickListener {
+            Navigation.findNavController(it).navigate(R.id.action_homeFragment_to_giroscopioFragment)
+        }
+
         return binding.root
     }
 
