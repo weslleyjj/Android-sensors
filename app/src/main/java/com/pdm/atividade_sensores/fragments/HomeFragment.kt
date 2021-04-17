@@ -22,8 +22,11 @@ class HomeFragment  : Fragment(){
         binding = DataBindingUtil.inflate(inflater, R.layout.home_fragment, container, false)
 
         binding.acelerometro.setOnClickListener {
-            print("Entrando")
             Navigation.findNavController(it).navigate(R.id.action_homeFragment_to_acelerometerFragment)
+        }
+
+        binding.proximidade.setOnClickListener {
+            Navigation.findNavController(it).navigate(R.id.action_homeFragment_to_proximityFragment)
         }
 
         return binding.root

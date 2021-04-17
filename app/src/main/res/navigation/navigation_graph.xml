@@ -20,5 +20,16 @@
         <action
             android:id="@+id/action_homeFragment_to_acelerometerFragment"
             app:destination="@id/acelerometerFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_proximityFragment"
+            app:destination="@id/proximityFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/proximityFragment"
+        android:name="com.pdm.atividade_sensores.fragments.ProximityFragment"
+        android:label="ProximityFragment" >
+        <action
+            android:id="@+id/action_proximityFragment_to_homeFragment"
+            app:destination="@id/homeFragment" />
     </fragment>
 </navigation>

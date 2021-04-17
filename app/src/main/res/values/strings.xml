@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">Atividade-Sensores</string>
     <string name="aceler_metro">Acelerômetro</string>
+    <string name="Proximidade">Proximidade</string>
 </resources>
