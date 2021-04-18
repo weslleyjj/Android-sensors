@@ -1,5 +1,6 @@
 package com.pdm.atividade_sensores.fragments
 
+import android.hardware.Sensor
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -22,19 +23,19 @@ class HomeFragment  : Fragment(){
         binding = DataBindingUtil.inflate(inflater, R.layout.home_fragment, container, false)
 
         binding.acelerometro.setOnClickListener {
-            Navigation.findNavController(it).navigate(R.id.action_homeFragment_to_acelerometerFragment)
+            Navigation.findNavController(it).navigate(HomeFragmentDirections.actionHomeFragmentToSensorFragment(Sensor.TYPE_ACCELEROMETER))
         }
 
         binding.proximidade.setOnClickListener {
-            Navigation.findNavController(it).navigate(R.id.action_homeFragment_to_proximityFragment)
+            Navigation.findNavController(it).navigate(HomeFragmentDirections.actionHomeFragmentToSensorFragment(Sensor.TYPE_PROXIMITY))
         }
 
         binding.giroscopio.setOnClickListener {
-            Navigation.findNavController(it).navigate(R.id.action_homeFragment_to_giroscopioFragment)
+            Navigation.findNavController(it).navigate(HomeFragmentDirections.actionHomeFragmentToSensorFragment(Sensor.TYPE_GYROSCOPE))
         }
 
         binding.luz.setOnClickListener {
-            Navigation.findNavController(it).navigate(R.id.action_homeFragment_to_luminosidadeFragment)
+            Navigation.findNavController(it).navigate(HomeFragmentDirections.actionHomeFragmentToSensorFragment(Sensor.TYPE_LIGHT))
         }
 
         return binding.root

@@ -6,52 +6,22 @@
     app:startDestination="@id/homeFragment">
 
     <fragment
-        android:id="@+id/acelerometerFragment"
-        android:name="com.pdm.atividade_sensores.fragments.AcelerometerFragment"
-        android:label="AcelerometerFragment" >
-        <action
-            android:id="@+id/action_acelerometerFragment_to_homeFragment"
-            app:destination="@id/homeFragment" />
-    </fragment>
-    <fragment
         android:id="@+id/homeFragment"
         android:name="com.pdm.atividade_sensores.fragments.HomeFragment"
         android:label="HomeFragment" >
         <action
-            android:id="@+id/action_homeFragment_to_acelerometerFragment"
-            app:destination="@id/acelerometerFragment" />
-        <action
-            android:id="@+id/action_homeFragment_to_proximityFragment"
-            app:destination="@id/proximityFragment" />
-        <action
-            android:id="@+id/action_homeFragment_to_giroscopioFragment"
-            app:destination="@id/giroscopioFragment" />
-        <action
-            android:id="@+id/action_homeFragment_to_luminosidadeFragment"
-            app:destination="@id/luminosidadeFragment" />
+            android:id="@+id/action_homeFragment_to_sensorFragment"
+            app:destination="@id/sensorFragment" />
     </fragment>
     <fragment
-        android:id="@+id/proximityFragment"
-        android:name="com.pdm.atividade_sensores.fragments.ProximityFragment"
-        android:label="ProximityFragment" >
+        android:id="@+id/sensorFragment"
+        android:name="com.pdm.atividade_sensores.fragments.SensorFragment"
+        android:label="SensorFragment" >
         <action
-            android:id="@+id/action_proximityFragment_to_homeFragment"
+            android:id="@+id/action_sensorFragment_to_homeFragment"
             app:destination="@id/homeFragment" />
-    </fragment>
-    <fragment
-        android:id="@+id/giroscopioFragment"
-        android:name="com.pdm.atividade_sensores.fragments.GiroscopioFragment"
-        android:label="GiroscopioFragment" >
-        <action
-            android:id="@+id/action_giroscopioFragment_to_homeFragment"
-            app:destination="@id/homeFragment" />
-    </fragment>
-    <fragment
-        android:id="@+id/luminosidadeFragment"
-        android:name="com.pdm.atividade_sensores.fragments.LuminosidadeFragment"
-        android:label="LuminosidadeFragment" >
-        <action
-            android:id="@+id/action_luminosidadeFragment_to_homeFragment"
-            app:destination="@id/homeFragment" />
+        <argument
+            android:name="TipoSensor"
+            app:argType="integer"/>
     </fragment>
 </navigation>

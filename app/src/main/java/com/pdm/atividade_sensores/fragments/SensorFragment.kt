@@ -13,22 +13,25 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.Navigation
 import com.pdm.atividade_sensores.MainActivity
 import com.pdm.atividade_sensores.R
-import com.pdm.atividade_sensores.databinding.LuzFragmentBinding
+import com.pdm.atividade_sensores.databinding.SensorFragmentBinding
 
-class LuminosidadeFragment : Fragment(), SensorEventListener {
+class SensorFragment : Fragment(), SensorEventListener {
 
-    lateinit var binding : LuzFragmentBinding
+    lateinit var binding : SensorFragmentBinding
     private var mAccelerometer : Sensor?= null
     private var resume = false;
+    lateinit var args : SensorFragmentArgs
 
     override fun onCreateView(
             inflater: LayoutInflater, container: ViewGroup?,
             savedInstanceState: Bundle?
     ): View? {
 
-        binding = DataBindingUtil.inflate(inflater, R.layout.luz_fragment, container, false)
+        binding = DataBindingUtil.inflate(inflater, R.layout.sensor_fragment, container, false)
 
-        mAccelerometer = (activity as MainActivity).mSensorManager.getDefaultSensor(Sensor.TYPE_LIGHT)
+        args = SensorFragmentArgs.fromBundle(requireArguments())
+
+        mAccelerometer = (activity as MainActivity).mSensorManager.getDefaultSensor(args.tipoSensor)
 
         binding.start.setOnClickListener {
             resumeReading(it)
@@ -40,7 +43,7 @@ class LuminosidadeFragment : Fragment(), SensorEventListener {
 
         binding.voltar.setOnClickListener {
             pauseReading(it)
-            Navigation.findNavController(it).navigate(R.id.action_luminosidadeFragment_to_homeFragment)
+            Navigation.findNavController(it).navigate(SensorFragmentDirections.actionSensorFragmentToHomeFragment())
         }
 
         return binding.root
@@ -48,7 +51,7 @@ class LuminosidadeFragment : Fragment(), SensorEventListener {
 
     override fun onSensorChanged(event: SensorEvent?) {
         if (event != null && resume) {
-            if (event.sensor.type == Sensor.TYPE_LIGHT) {
+            if (event.sensor.type == args.tipoSensor) {
                 binding.textSensor.text = event.values[0].toString()
             }
         }
